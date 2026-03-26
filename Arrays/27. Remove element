@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        int k=0;
+        //pointer to store the element not equal to val
+        // loop for check the array and remove the value element 
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums[i]!=val)// i not equal to val then return it 
+            {
+                nums[k]=nums[i];// to reduce the space complexity 
+                k++;
+            }
+            
+        }
+        return k;// last remaining elements to be print 
+    }
+};
