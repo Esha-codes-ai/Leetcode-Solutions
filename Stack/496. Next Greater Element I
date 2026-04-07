@@ -1,0 +1,27 @@
+//by stack operations and map optimization
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        unordered_map<int, int>mp;
+        stack<int>stack;
+
+        for(int i=0; i<nums2.size();i++ ){
+            int num=nums2[i];
+            while(!stack.empty() && nums2[i]>stack.top()){
+                mp[stack.top()]=num;
+                stack.pop();
+            }
+            stack.push(num);
+        }
+        while(!stack.empty()){
+            mp[stack.top()]=-1;
+            stack.pop();
+        }
+        vector<int> ans(nums1.size());
+        for(int i=0; i<nums1.size();i++){
+            ans[i]=mp[nums1[i]];
+        }
+           return ans;
+    }
+};
